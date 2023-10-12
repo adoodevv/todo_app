@@ -14,7 +14,12 @@ function addTask() {
         const checkBox = document.createElement("input");
         checkBox.type = "checkbox";
         checkBox.addEventListener("change", moveTask);
-        taskItem.appendChild(checkBox)
+        taskItem.appendChild(checkBox);
+
+        const deleteButton = document.createElement("button");
+        editButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+        deleteButton.addEventListener("click", deleteTask);
+        taskItem.appendChild(deleteButton);
 
         taskList.appendChild(taskItem);
         taskInput.value = "";
@@ -31,4 +36,9 @@ function moveTask(event) {
     else {
         taskList.appendChild(taskItem);
     }
+}
+
+function deleteTask() {
+    const taskItem = this.parentElement;
+    taskItem.remove();
 }
